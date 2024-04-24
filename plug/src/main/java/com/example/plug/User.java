@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 public class User {
     String login;
     String password;
-
+    LocalDateTime date;
     public LocalDateTime getDate() {
         return date;
     }
@@ -15,7 +15,7 @@ public class User {
         this.date = date;
     }
 
-    LocalDateTime date;
+
     public String getLogin() {
         return login;
     }
