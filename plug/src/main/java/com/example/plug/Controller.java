@@ -11,7 +11,11 @@ public class Controller {
 
 
 
- @GetMapping("/date")
+// @GetMapping("/date")
+// public String getStaticJson() {
+//        return "{\"message\":\"Static JSON\"}";
+// }
+    @GetMapping("/date")
     public Map<String, String> getStaticJson() {
         Map<String, String> response = new HashMap<>();
         response.put("message", "Static JSON");
