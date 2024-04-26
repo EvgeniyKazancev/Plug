@@ -1,6 +1,10 @@
 package com.example.plug;
 
+import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.*;
+
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,26 +15,22 @@ public class Controller {
 
 
 
-// @GetMapping("/date")
-// public String getStaticJson() {
-//        return "{\"message\":\"Static JSON\"}";
-// }
+
     @GetMapping("/date")
-    public Map<String, String> getStaticJson() {
+    public ResponseEntity<Map<String,String>> getStaticJson() {
+
         Map<String, String> response = new HashMap<>();
         response.put("message", "Static JSON");
 
-        return response;
+        return ResponseEntity.ok(response);
     }
+
     @PostMapping("/login")
-    public User postLogin(@RequestParam String login, @RequestParam String password) {
-        User user = new User();
-        user.setLogin(login);
-        user.setPassword(password);
+    public ResponseEntity<User> postLogin(@Valid @RequestBody User user) {
 
-        LocalDateTime currentDate = LocalDateTime.now();
-        user.setDate(currentDate);
+        user.setDate(LocalDateTime.now());
 
-        return user;
+        return ResponseEntity.ok(user);
     }
+
 }
