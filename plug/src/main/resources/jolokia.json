@@ -1,0 +1,10 @@
+{
+  "type" : "readwrite",
+  "protocol" : "http",
+  "host" : "localhost",
+  "port" : 8080,
+  "authentication" : {
+    "type" : "none"
+  },
+  "rootpath" : "/jolokia"
+}
