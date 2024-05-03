@@ -7,12 +7,12 @@ import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 public class User {
-    @Size(min = 3, message = "Логин не может быть меньше 3 символов")
-    @NotBlank(message = "Логин не может быть пустым")
+//    @Size(min = 3, message = "Логин не может быть меньше 3 символов")
+//    @NotBlank(message = "Логин не может быть пустым")
     String login;
 
-    @Size(min = 3, max = 10, message = "Пароль не может быть меньше 3 или больше 10 символов ")
-    @NotBlank(message = "Пароль не может быть пустым")
+//    @Size(min = 3, max = 10, message = "Пароль не может быть меньше 3 или больше 10 символов ")
+//    @NotBlank(message = "Пароль не может быть пустым")
     String password;
 
     LocalDateTime date;
@@ -29,6 +29,7 @@ public class User {
     public String getLogin() {
         return login;
     }
+
 
     public void setLogin(String login) {
         this.login = login;

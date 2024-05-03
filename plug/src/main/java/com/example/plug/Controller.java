@@ -1,6 +1,7 @@
 package com.example.plug;
 
-import jakarta.validation.Valid;
+import jakarta.validation.*;
+
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.*;
@@ -9,15 +10,13 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
+
 @RestController
 @RequestMapping("/api")
 public class Controller {
 
-
-
-
     @GetMapping("/date")
-    public ResponseEntity<Map<String,String>> getStaticJson() {
+    public ResponseEntity<?> getStaticJson() {
 
         Map<String, String> response = new HashMap<>();
         response.put("message", "Static JSON");
@@ -25,12 +24,23 @@ public class Controller {
         return ResponseEntity.ok(response);
     }
 
+
     @PostMapping("/login")
-    public ResponseEntity<User> postLogin(@Valid @RequestBody User user) {
+    public ResponseEntity<?> postLogin(@Valid @RequestBody Map<String, String> userNew) {
 
-        user.setDate(LocalDateTime.now());
+        if (userNew.size() == 2 && userNew.containsKey("login") && userNew.containsKey("password")) {
+            User user = new User();
+            user.setLogin(userNew.get("login"));
+            user.setPassword(userNew.get("password"));
+            user.setDate(LocalDateTime.now());
 
-        return ResponseEntity.ok(user);
+            return ResponseEntity.ok(user);
+
+        } else {
+
+            return ResponseEntity.badRequest().body("Введите корректный запрос");
+        }
     }
+
 
 }
